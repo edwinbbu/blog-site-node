@@ -10,8 +10,8 @@ profileRouter.route('/')
          })
     .post(function(req,res){
         var profile={
-            'name' : req.body.name,
-            'age' : req.body.age
+            'email' : req.body.email,
+            'password' : req.body.password
         }
         //console.log(profile);
         res.render('success', profile);
