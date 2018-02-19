@@ -11,10 +11,10 @@
     <title>Note Taking App</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/shop-item.css" rel="stylesheet">
+    <link href="/css/shop-item.css" rel="stylesheet">
 
   </head>
 
@@ -64,13 +64,15 @@
             <div class="card-header">
               Personal Notes
             </div>
+            <% for(var i=0;i< context.length;i++){ %>
             <div class="card-body">
-              <h2><%= title %></h2>
-              <p><%= content %></p>
+              <h2><%= context[i].title %></h2>
+              <p><%= context[i].content %></p>
               <small class="text-muted">Posted by Edwin Babu on 3/1/17</small>
               <hr>
               <a href="#" class="btn btn-success">Leave a Review</a>
             </div>
+            <% } %>
           </div>
           <!-- /.card -->
 
@@ -83,8 +85,8 @@
     <!-- /.container -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
