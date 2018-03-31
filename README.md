@@ -1,2 +1,2 @@
-# Web-app--Node
-Node with Express
+# Blog Site
+Language: Node, Express, ejs, mongoose
