@@ -21,19 +21,5 @@ notesRouter.route('/')
         //console.log(profile);
 
     });
-// notesRouter.route('/all')
-//     .get(function (req, res) {
-//         Blog.find({}, function (err, context) {
-//             if (err) {
-//                 console.log(err);
-//             }
-//             //console.log(context[0].title);
-//             //console.log(typeof(context));
-//             var data = {
-//                 context: context
-//             }
-//             res.render('notes', data);
-//         });
-//     });
 
 module.exports = notesRouter;

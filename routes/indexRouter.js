@@ -11,8 +11,18 @@ indexRouter.route('/')
             var data = {
                 context: context
             }
-            res.render('notes', data);
+            //console.log(context[0]._id);
+            res.render('index', data);
         });
+    });
+indexRouter.route('/delete')
+    .post(function (req, res) {
+        console.log(req.body);
+        Blog.findByIdAndRemove(req.body.id, (err, item) => {
+            if (err) return res.status(500).send(err);
+            console.log("Blog Deleted");
+        });
+        res.redirect('/');
     });
 
 module.exports = indexRouter;
