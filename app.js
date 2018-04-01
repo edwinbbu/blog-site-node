@@ -32,15 +32,11 @@ app.use(parser.urlencoded({ extended: false }))
 app.use(expressLayouts);
 
 // require files
+var indexRouter = require('./routes/indexRouter');
 var profileRouter = require('./routes/profileRouter');
 var notesRouter = require('./routes/notesRouter');
 
-
-app.get('/', function (req, res) {
-    res.render('index');
-});
-
-
+app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/notes', notesRouter);
 

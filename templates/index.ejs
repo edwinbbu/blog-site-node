@@ -3,6 +3,8 @@
 
   <div class="row">
 
+
+
     <div class="col-lg-12">
 
 
@@ -10,26 +12,20 @@
 
       <div class="card card-outline-secondary my-4">
         <div class="card-header">
-          Notes
+          Personal Notes
         </div>
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
-            neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
-            natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
-            neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
-            natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
-            neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint
-            natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <a href="#" class="btn btn-success">Leave a Review</a>
-        </div>
+        <% for(var i=0;i< context.length;i++){ %>
+          <div class="card-body">
+            <h2>
+              <%= context[i].title %>
+            </h2>
+            <p>
+              <%= context[i].content %>
+            </p>
+            <small class="text-muted">Posted by Edwin Babu on 3/1/17</small>
+            <hr>
+          </div>
+          <% } %>
       </div>
       <!-- /.card -->
 
@@ -39,4 +35,3 @@
   </div>
 
 </div>
-<!-- /.container -->
