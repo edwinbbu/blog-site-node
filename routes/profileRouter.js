@@ -10,10 +10,10 @@ profileRouter.route('/')
     })
     .post(function (req, res) {
         var profile = {
-            'email': req.body.email,
+            'user': req.body.username,
             'password': req.body.password
         }
-        //console.log(profile);
+        console.log(profile);
         res.render('success', profile);
     });
 
