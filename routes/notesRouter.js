@@ -4,7 +4,7 @@ Blog = require('../models/blog');
 
 notesRouter.route('/')
     .get(function (req, res) {
-        context = {
+        var context = {
             form: 'New Blog'
         }
         res.render('add', context);

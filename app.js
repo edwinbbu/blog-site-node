@@ -8,6 +8,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var expressLayouts = require('express-ejs-layouts');
+var flash = require('connect-flash');
+var morgan = require('morgan');
 
 //database connection
 mongoose.connect('mongodb://localhost/server')
@@ -20,7 +22,7 @@ db.once('open', function () {
 
 // basic setup
 var app = express();
-var port = 8000;
+var port = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates'));
@@ -30,15 +32,23 @@ app.use(express.static('static'));
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }))
 app.use(expressLayouts);
+app.use(morgan('dev'));
+
+app.use(session({secret:'Blog-App'}))
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash()); // flash messages
+require('./config/passport')(app,passport);
 
 // require files
 var indexRouter = require('./routes/indexRouter');
-var profileRouter = require('./routes/profileRouter');
+var loginRouter = require('./routes/loginRouter');
 var notesRouter = require('./routes/notesRouter');
-
+var signupRouter = require('./routes/signupRouter');
 app.use('/', indexRouter);
-app.use('/profile', profileRouter);
+app.use('/login', loginRouter);
 app.use('/notes', notesRouter);
+app.use('/signup', signupRouter);
 
 app.listen(port, function (error) {
     console.log('running server on port ' + port);
