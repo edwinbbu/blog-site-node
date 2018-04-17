@@ -1,5 +1,6 @@
-var express = require('express'),
-    signupRouter = express.Router();
+var express = require('express');
+var signupRouter = express.Router();
+var User= require('../models/auth.js');
 
 signupRouter.route('/')
     .get(function (req, res) {
@@ -12,7 +13,8 @@ signupRouter.route('/')
             'username': req.body.username,
             'password': req.body.password
         }
-        console.log(profile);
+        var user = new User(profile);
+        user.save();
         res.render('success', profile);
     });
 
