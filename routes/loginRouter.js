@@ -7,7 +7,7 @@ loginRouter.route('/')
     })
     .post(function (req, res) {
         var profile = {
-            'user': req.body.username,
+            'username': req.body.username,
             'password': req.body.password
         }
         res.render('success', profile);
