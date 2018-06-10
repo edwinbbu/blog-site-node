@@ -1,8 +1,8 @@
-var express = require('express'),
-    notesRouter = express.Router();
+var express = require('express');
+var router = express.Router();
 Blog = require('../models/blog');
 
-notesRouter.route('/')
+router.route('/')
     .get(function (req, res) {
         var context = {
             form: 'New Blog'
@@ -22,4 +22,4 @@ notesRouter.route('/')
 
     });
 
-module.exports = notesRouter;
+module.exports = router;

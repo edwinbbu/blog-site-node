@@ -1,7 +1,7 @@
 var express = require('express'),
-    profileRouter = express.Router();
+    router = express.Router();
 
-profileRouter.route('/')
+router.route('/')
     .get(function (req, res) {
         context = {
             form: 'Profile Form'
@@ -17,4 +17,4 @@ profileRouter.route('/')
         res.render('success', profile);
     });
 
-module.exports = profileRouter;
+module.exports = router;

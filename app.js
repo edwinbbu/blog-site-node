@@ -12,13 +12,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 
 //database connection
-mongoose.connect('mongodb://localhost/server')
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    // we're connected!
-    console.log("Database connected");
-});
+var db = require('./config/database.js');
 
 // basic setup
 var app = express();
@@ -34,11 +28,15 @@ app.use(parser.urlencoded({ extended: false }))
 app.use(expressLayouts);
 app.use(morgan('dev'));
 
-app.use(session({secret:'Blog-App'}))
+app.use(session({
+    secret:'Blog-App',
+    saveUninitialized: true,
+    resave: true
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash()); // flash messages
-require('./config/passport')(app,passport);
 
 // require files
 var indexRouter = require('./routes/indexRouter');

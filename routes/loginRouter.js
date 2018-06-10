@@ -1,7 +1,7 @@
 var express = require('express'),
-    loginRouter = express.Router();
+    router = express.Router();
 
-loginRouter.route('/')
+router.route('/')
     .get(function (req, res) {
         res.render('login');
     })
@@ -13,4 +13,4 @@ loginRouter.route('/')
         res.render('success', profile);
     });
 
-module.exports = loginRouter;
+module.exports = router;
