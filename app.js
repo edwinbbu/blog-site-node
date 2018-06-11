@@ -16,7 +16,7 @@ var db = require('./config/database.js');
 
 // basic setup
 var app = express();
-var port = 3000;
+var port = 8080;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates'));

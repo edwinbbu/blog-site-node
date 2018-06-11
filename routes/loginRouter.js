@@ -1,16 +1,16 @@
-var express = require('express'),
-    router = express.Router();
+var express = require('express');
+var router = express.Router();
+var passport = require('passport');
+require('../config/passport');
 
 router.route('/')
     .get(function (req, res) {
         res.render('login');
     })
-    .post(function (req, res) {
-        var profile = {
-            'username': req.body.username,
-            'password': req.body.password
-        }
-        res.render('success', profile);
-    });
+    .post(passport.authenticate('login',{
+        successRedirect: '/notes',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
 
 module.exports = router;
