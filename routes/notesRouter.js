@@ -27,6 +27,7 @@ router.route('/')
 router.route('/logout')
     .get(function(req,res){
         req.logout();
+        req.flash('error',"Succesfully logged out");
         res.redirect('/login');
     })
 // route middleware to make sure a user is logged in

@@ -38,6 +38,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash()); // flash messages
 
+app.use(function (req, res, next) {
+    res.locals.success = req.flash('success');
+    res.locals.info = req.flash('info');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    next();
+  });
+
 // require files
 var indexRouter = require('./routes/indexRouter');
 var loginRouter = require('./routes/loginRouter');

@@ -24,7 +24,7 @@ passport.use('signup', new LocalStratery({
         if (err)
           return done(err);
         if (user) {
-          return done(null, false, req.flash('signupMessage', 'This username is already taken.'));
+          return done(null, false, req.flash('error', 'This username is already taken.'));
         }
         else {
           var newUser = new User();
@@ -36,9 +36,8 @@ passport.use('signup', new LocalStratery({
           newUser.save(function (err) {
             if (err){
               throw err;
-            }
-            console.log(success);  
-            return done(null, newUser);
+            } 
+            return done(null, newUser, req.flash('success', 'Registeration Successfull'));
           });
         }
       });
@@ -52,23 +51,20 @@ passport.use('login', new LocalStratery({
   passReqToCallback: true
 },
   function (req, username, password, done) {
-    console.log(req.body);
-    console.log(username+":"+password);
     User.findOne({ 'username': username }, function (err, user) {
       if (err) {
         console.log("db error");
         return done(err);
       }
-      console.log(user);
       if (!user) {
         console.log("err1");
-        return done(null, false, req.flash('loginMessage', "No User Found."));
+        return done(null, false, req.flash('error', "No User Found."));
       }
       if (!user.validPassword(password)) {
         console.log("err2");
-        return done(null, false, req.flash('loginMessage', "Wrong Password"));
+        return done(null, false, req.flash('error', "Wrong Password"));
       }
-      return done(null, user);
+      return done(null, user, req.flash('success', "Successfully logged in"));
     });
   }
 ));
