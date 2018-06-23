@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Learning App",
   "main": "app.js",
+  "keywords": [
+    "blog-site",
+    "authentication",
+    "mongoose",
+    "express"
+  ],
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
