@@ -51,10 +51,13 @@ var indexRouter = require('./routes/indexRouter');
 var loginRouter = require('./routes/loginRouter');
 var notesRouter = require('./routes/notesRouter');
 var signupRouter = require('./routes/signupRouter');
+var profileRouter = require('./routes/profileRouter');
+
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/notes', notesRouter);
 app.use('/signup', signupRouter);
+app.use('/profile', profileRouter);
 
 app.listen(port, function (error) {
     console.log('running server on port ' + port);
