@@ -16,6 +16,7 @@ router.route('/')
             // 'name' : req.body.name,
             'title': req.body.title,
             'content': req.body.content,
+            'creator': req.user.name
         }
         var blog = new Blog(context);
         blog.save();

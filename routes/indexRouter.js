@@ -1,5 +1,5 @@
-var express = require('express'),
-    indexRouter = express.Router();
+var express = require('express');
+var indexRouter = express.Router();
 Blog = require('../models/blog');
 
 indexRouter.route('/')
@@ -11,7 +11,7 @@ indexRouter.route('/')
             var data = {
                 context: context
             }
-            //console.log(context[0]._id);
+            //console.log(context[0]);
             res.render('index', data);
         });
     });
