@@ -8,7 +8,7 @@ require('../config/passport')
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads')
+        cb(null, './static/images')
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
@@ -25,9 +25,11 @@ router.route('/')
     })
     .post(upload.any(), isLoggedIn, function (req, res) {
         console.log(req.files);
+        let filePath=req.files[0].path.split('/');
+        let fileurl=filePath[1]+'/'+filePath[2];
         var img = {
             name: req.files[0].originalname,
-            path: req.files[0].path
+            path: fileurl
         }
         var context = {
             // 'name' : req.body.name,

@@ -22,7 +22,10 @@
             <button  class="btn btn-primary pull-right" style="float:right;">Delete</button>
             </form>
             <p><%= context[i].content %></p>
-            <img src="<%= context[i].img.path%>"/>
+            <% if(context[i].img.path) { %>
+            <img style="width: 100px; height: 100px;" src="<%= context[i].img.path%>" alt="No image"/>
+            <% } %>
+            <br>
             <small class="text-muted">Posted by <%= context[i].creator%> on <%= context[i].created_at.toDateString() %></small>
             <hr>
           </div>
