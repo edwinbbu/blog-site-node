@@ -16,27 +16,20 @@
         </div>
         <% for(var i=0;i< context.length;i++){ %>
           <div class="card-body">
-            <h2>
-              <%= context[i].title %>
-            </h2>
+            <h2><%= context[i].title %></h2>
             <form action="/delete" method="POST">
               <input type="text" value="<%= context[i]._id %>" name="id" id="id" hidden/>
             <button  class="btn btn-primary pull-right" style="float:right;">Delete</button>
             </form>
-            <p>
-
-              <%= context[i].content %>
-            </p>
+            <p><%= context[i].content %></p>
+            <img src="<%= context[i].img.path%>"/>
             <small class="text-muted">Posted by <%= context[i].creator%> on <%= context[i].created_at.toDateString() %></small>
             <hr>
           </div>
           <% } %>
       </div>
       <!-- /.card -->
-
     </div>
     <!-- /.col-lg-9 -->
-
   </div>
-
 </div>

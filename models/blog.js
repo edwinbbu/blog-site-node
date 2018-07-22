@@ -12,7 +12,18 @@ var BlogSchema = mongoose.Schema({
         type:String,
         default: "Anonymous"
     },
-    created_at: { type: Date, default: Date.now }
+    created_at: { 
+        type: Date, 
+        default: Date.now 
+    },
+    img: {
+		originalname:{
+            type: String
+        },
+        path:{
+            type: String
+        }
+	},
 });
 
 var Blog = module.exports = mongoose.model('Blog', BlogSchema);

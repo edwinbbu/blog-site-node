@@ -11,9 +11,6 @@ var expressLayouts = require('express-ejs-layouts');
 var flash = require('connect-flash');
 var morgan = require('morgan');
 
-//database connection
-var db = require('./config/database.js');
-
 // basic setup
 var app = express();
 var port = 8080;
@@ -60,5 +57,5 @@ app.use('/signup', signupRouter);
 app.use('/profile', profileRouter);
 
 app.listen(port, function (error) {
-    console.log('running server on port ' + port);
+    console.log('Server running on port ' + port);
 });
