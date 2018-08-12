@@ -25,11 +25,19 @@ router.route('/')
     })
     .post(upload.any(), isLoggedIn, function (req, res) {
         console.log(req.files);
-        let filePath=req.files[0].path.split('/');
-        let fileurl=filePath[1]+'/'+filePath[2];
-        var img = {
-            name: req.files[0].originalname,
-            path: fileurl
+        if (req.files.length>0) {
+            let filePath = req.files[0].path.split('/');
+            let fileurl = filePath[1] + '/' + filePath[2];
+            var img = {
+                name: req.files[0].originalname,
+                path: fileurl
+            }
+        }
+        else{
+            var img={
+                name: null,
+                path: null
+            }
         }
         var context = {
             // 'name' : req.body.name,
