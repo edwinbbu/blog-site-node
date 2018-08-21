@@ -1,4 +1,5 @@
 //Imports
+require('dotenv-extended').load();
 var express = require('express');
 var path = require('path');
 var parser = require('body-parser')
@@ -13,7 +14,7 @@ var morgan = require('morgan');
 
 // basic setup
 var app = express();
-var port = 8080;
+var port = process.env.port;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates'));
