@@ -57,11 +57,9 @@ passport.use('login', new LocalStratery({
         return done(err);
       }
       if (!user) {
-        console.log("err1");
         return done(null, false, req.flash('error', "No User Found."));
       }
       if (!user.validPassword(password)) {
-        console.log("err2");
         return done(null, false, req.flash('error', "Wrong Password"));
       }
       return done(null, user, req.flash('success', "Successfully logged in"));
