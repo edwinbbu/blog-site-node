@@ -16,17 +16,37 @@
         </div>
         <% for(var i=0;i< context.length;i++){ %>
           <div class="card-body">
-            <h2><%= context[i].title %></h2>
-            <form action="/delete" method="POST">
-              <input type="text" value="<%= context[i]._id %>" name="id" id="id" hidden/>
-            <button  class="btn btn-primary pull-right" style="float:right;">Delete</button>
-            </form>
-            <p><%= context[i].content %></p>
-            <% if(context[i].img.path) { %>
-            <img style="width: 100px; height: 100px;" src="<%= context[i].img.path%>" alt="No image"/>
-            <% } %>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+              <h2>
+                <%= context[i].title %>
+              </h2>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">
+              <form action="/delete" method="POST">
+                <input type="text" value="<%= context[i]._id %>" name="id" id="id" hidden/>
+                <button class="btn btn-primary pull-right" style="float:right;">Delete</button>
+              </form>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-8">
+                <p>
+                  <%= context[i].content %>
+                </p>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                <% if(context[i].img.path) { %>
+                  <img style="width: 120px; height: 120px;" src="<%= context[i].img.path%>" alt="No image"
+                  />
+                  <% } %>
+              </div>
+            </div>
             <br>
-            <small class="text-muted">Posted by <%= context[i].creator%> on <%= context[i].created_at.toDateString() %></small>
+            <small class="text-muted">Posted by
+              <%= context[i].creator%> on
+                <%= context[i].created_at.toDateString() %>
+            </small>
             <hr>
           </div>
           <% } %>
