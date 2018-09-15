@@ -3,9 +3,6 @@ require('dotenv-extended').load();
 var express = require('express');
 var path = require('path');
 var parser = require('body-parser')
-var cookieParser = require('cookie-parser');
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var expressLayouts = require('express-ejs-layouts');

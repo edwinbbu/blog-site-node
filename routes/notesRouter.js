@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
 var multer = require('multer');
+const { check, validationResult } = require('express-validator/check');
 
 Blog = require('../models/blog');
 require('../config/passport')
@@ -23,33 +23,44 @@ router.route('/')
         }
         res.render('add', context);
     })
-    .post(upload.any(), isLoggedIn, function (req, res) {
-        console.log(req.files);
-        if (req.files.length>0) {
-            let filePath = req.files[0].path.split('/');
-            let fileurl = filePath[1] + '/' + filePath[2];
-            var img = {
-                name: req.files[0].originalname,
-                path: fileurl
+    .post(upload.any(), isLoggedIn,
+        [check('title').not().isEmpty(),
+        check('content').not().isEmpty()], function (req, res) {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                req.flash('error', "Provide details for the blog");
+                res.redirect('/notes');
             }
-        }
-        else{
-            var img={
-                name: null,
-                path: null
+            else {
+                if (req.files.length > 0) {
+                    let filePath = req.files[0].path.split('/');
+                    let fileurl = filePath[1] + '/' + filePath[2];
+                    var img = {
+                        name: req.files[0].originalname,
+                        path: fileurl
+                    }
+                }
+                else {
+                    var img = {
+                        name: null,
+                        path: null
+                    }
+                }
+                check('username').isEmail(),
+                    check('password').isLength({ min: 5 })
+                var context = {
+                    // 'name' : req.body.name,
+                    'title': req.body.title,
+                    'content': req.body.content,
+                    'creator': req.user.name,
+                    'img': img
+                }
+                var blog = new Blog(context);
+                blog.save();
+                res.redirect('/');
             }
-        }
-        var context = {
-            // 'name' : req.body.name,
-            'title': req.body.title,
-            'content': req.body.content,
-            'creator': req.user.name,
-            'img': img
-        }
-        var blog = new Blog(context);
-        blog.save();
-        res.redirect('/');
-    });
+
+        });
 
 router.route('/logout')
     .get(function (req, res) {
