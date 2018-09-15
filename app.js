@@ -11,7 +11,7 @@ var morgan = require('morgan');
 
 // basic setup
 var app = express();
-var port = process.env.port;
+var port = process.env.port || 8000 ;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'templates'));
