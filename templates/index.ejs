@@ -17,12 +17,15 @@
                   <%= context[i].title %>
                 </h2>
               </div>
-              <div class="col-lg-4 col-md-4 col-sm-4">
-                <form action="/delete" method="POST">
-                  <input type="text" value="<%= context[i]._id %>" name="id" id="id" hidden/>
-                  <button class="btn btn-primary pull-right" style="float:right;">Delete</button>
-                </form>
-              </div>
+              <% if (user) { %>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <form action="/delete" method="POST">
+                    <input type="text" value="<%= context[i]._id %>" name="id" id="id" hidden/>
+                    <button class="btn btn-primary pull-right" style="float:right;">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+              
             </div>
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-8">
