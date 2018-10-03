@@ -4,4 +4,4 @@ Language: Node, Express, ejs, mongoose
 
 Website Hosted in AWS
 url: http://54.235.230.49:8000<br>
-Jenkins Integration
+CI/CD - Jenkins Integration 
