@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
-if (process.env.STAGE != dev) {
+if (process.env.STAGE != "dev") {
   app.use(function(req, res, next) {
     if (req.get("X-Forwarded-Proto") !== "https") {
       res.redirect("https://" + req.get("Host") + req.url);
